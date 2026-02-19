@@ -6,3 +6,18 @@ A locally runnable ingestion system that models enterprise POS realities: retrie
 ```powershell
 docker compose up -d --build
 ```
+
+## Verify
+API health: http://localhost:8000/v1/health
+UI: http://localhost:8501
+
+## Stop
+```powershell
+docker compose down
+```
+
+## Reset DB (rerun schema init scripts)
+```powershell
+docker compose down -v
+docker compose up -d --build
+```
