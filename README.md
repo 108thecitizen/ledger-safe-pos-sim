@@ -5,3 +5,4 @@ A locally runnable ingestion system that models enterprise POS realities: retrie
 ## Run locally (Docker Desktop)
 ```powershell
 docker compose up -d --build
+```
