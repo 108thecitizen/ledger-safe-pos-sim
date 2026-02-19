@@ -1,0 +1,2 @@
+﻿-- Seed is intentionally minimal for Step 1.
+-- We will add tenants/stores tables + seed data in Step 2.
