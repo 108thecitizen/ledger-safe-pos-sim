@@ -1,0 +1,17 @@
+# Normalize text files in the repo and keep line endings consistent
+* text=auto
+
+# Keep shell scripts LF (useful if you add scripts later)
+*.sh text eol=lf
+*.bash text eol=lf
+
+# Docker + YAML + SQL should be LF (avoids odd container parsing edge cases)
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sql text eol=lf
+
+# Python files
+*.py text eol=lf
+
+# Markdown files
+*.md text eol=lf
