@@ -1,4 +1,4 @@
-﻿CREATE EXTENSION IF NOT EXISTS pgcrypto;
+CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
 -- --- Bronze (raw events) ---
 CREATE TABLE IF NOT EXISTS events_raw (
