@@ -8,7 +8,12 @@ Ledger-Safe is intentionally small, but it models the parts that make enterprise
 
 ## System diagram
 
-```mermaid
+![Ledger-Safe architecture diagram](assets/architecture.png)
+
+<details>
+<summary>Mermaid source (for editing)</summary>
+
+```text
 flowchart LR
   subgraph Producers
     POS[POS / upstream producer]
@@ -19,7 +24,7 @@ flowchart LR
     OPS[Streamlit ops console]
   end
 
-  subgraph Postgres["Postgres 16 (system of record)"]
+  subgraph Postgres["Postgres 16 - system of record"]
     RAW[(events_raw - Bronze)]
     EP[(events_processed - idempotency state)]
     EX[(exceptions - quarantine queue)]
@@ -31,13 +36,13 @@ flowchart LR
   API -->|upsert state| EP
   API -->|quarantine on conflict| EX
   API -->|audit actions| AUD
-
   OPS -->|GET /v1/health| API
   OPS -->|GET /v1/exceptions| API
   OPS -->|GET /v1/exceptions/{exception_id}| API
   OPS -->|POST /v1/exceptions/{exception_id}/resolve| API
 ```
 
+</details>
 ## Why the architecture is shaped this way
 
 ### 1) Bronze is append-only by design
