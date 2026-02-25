@@ -11,9 +11,9 @@ Ledger-Safe is intentionally small, but it models the parts that make enterprise
 ![Ledger-Safe architecture diagram](assets/architecture.png)
 
 <details>
-<summary>Mermaid source (for editing)</summary>
+<summary>Mermaid Render</summary>
 
-```text
+```mermaid
 flowchart LR
   subgraph Producers
     POS[POS / upstream producer]

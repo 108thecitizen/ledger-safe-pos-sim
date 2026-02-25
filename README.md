@@ -29,7 +29,7 @@ A portfolio-grade ingestion system that demonstrates ledger-safe correctness for
 <details>
 <summary>Mermaid source (optional)</summary>
 
-```text
+```mermaid
 flowchart LR
   POS[POS / Producer] -->|POST /v1/events| API[Ingestion API - FastAPI]
   API -->|append-only| RAW[(events_raw - Bronze)]
@@ -45,8 +45,8 @@ flowchart LR
   DB --- AUDIT
 ```
 
+
 </details>
-```
 
 ## Portable demo (no runtime required)
 
