@@ -1,3 +1,4 @@
+```mermaid
 flowchart LR
   POS[POS / Producer] -->|POST /v1/events| API[Ingestion API - FastAPI]
   API -->|append-only| RAW[(events_raw - Bronze)]
@@ -11,3 +12,4 @@ flowchart LR
   DB --- EP
   DB --- EX
   DB --- AUDIT
+```
