@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0",
+  "tenant_id": "tenant_demo",
+  "store_id": "store_001",
+  "source_system": "pos_sim",
+  "event_id": "evt-1001",
+  "source_event_id": "src-1001",
+  "event_type": "SALE",
+  "occurred_at": "2026-02-25T00:00:00Z",
+  "txn_id": "txn-9001",
+  "currency": "USD",
+  "total_amount": 41.0,
+  "line_items": [
+    {
+      "sku": "SKU-AAA",
+      "qty": 1,
+      "amount": 28.5
+    },
+    {
+      "sku": "SKU-BBB",
+      "qty": 1,
+      "amount": 12.5
+    }
+  ]
+}

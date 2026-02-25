@@ -1,0 +1,160 @@
+{
+  "info": {
+    "name": "Ledger-Safe POS Ingestion Simulator",
+    "_postman_id": "b1a1b2c3-d4e5-6789-0123-456789abcdef",
+    "description": "Postman collection for the Ledger-Safe ingestion API (health, ingest, exceptions, resolve/replay).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/health",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "health"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Ingest Event",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"schema_version\": \"1.0\",\n  \"tenant_id\": \"tenant_demo\",\n  \"store_id\": \"store_001\",\n  \"source_system\": \"pos_sim\",\n  \"event_id\": \"evt-1001\",\n  \"source_event_id\": \"src-1001\",\n  \"event_type\": \"SALE\",\n  \"occurred_at\": \"2026-02-25T00:00:00Z\",\n  \"txn_id\": \"txn-9001\",\n  \"currency\": \"USD\",\n  \"total_amount\": 42.5,\n  \"line_items\": [\n    {\n      \"sku\": \"SKU-AAA\",\n      \"qty\": 1,\n      \"amount\": 30.0\n    },\n    {\n      \"sku\": \"SKU-BBB\",\n      \"qty\": 1,\n      \"amount\": 12.5\n    }\n  ]\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v1/events",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "events"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Exceptions - Open",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/exceptions?status=open&limit=50",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "exceptions"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "open"
+            },
+            {
+              "key": "limit",
+              "value": "50"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Exception Detail (set exception_id)",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/v1/exceptions/{{exception_id}}",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "exceptions",
+            "{{exception_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Resolve - Ignore (no replay)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"action\": \"mark_resolved_no_replay\",\n  \"actor\": \"operator:bill\",\n  \"resolution_notes\": \"Demo: ignoring this exception for now.\",\n  \"override_patch\": {}\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v1/exceptions/{{exception_id}}/resolve",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "exceptions",
+            "{{exception_id}}",
+            "resolve"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Resolve - Override and Replay",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"action\": \"override_and_replay\",\n  \"actor\": \"operator:bill\",\n  \"resolution_notes\": \"Demo: replay using canonical payload and optional patch.\",\n  \"override_patch\": {},\n  \"canonical_raw_id\": null\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/v1/exceptions/{{exception_id}}/resolve",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "v1",
+            "exceptions",
+            "{{exception_id}}",
+            "resolve"
+          ]
+        }
+      }
+    }
+  ]
+}
