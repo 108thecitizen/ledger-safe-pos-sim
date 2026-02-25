@@ -27,7 +27,7 @@ A portfolio-grade ingestion system that demonstrates ledger-safe correctness for
 ![Ledger-Safe architecture](docs/assets/architecture.png)
 
 <details>
-<summary>Mermaid source (optional)</summary>
+<summary>Mermaid Render</summary>
 
 ```mermaid
 flowchart LR
