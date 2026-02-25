@@ -15,3 +15,18 @@
 
 # Markdown files
 *.md text eol=lf
+
+# Force binaries (never line-ending convert these)
+*.pdf binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.zip binary
+
+# Optional: keep shell scripts LF (helps in Docker/Linux)
+*.sh text eol=lf
+
+# Optional: keep PowerShell scripts as CRLF (Windows-friendly)
+*.ps1 text eol=crlf
