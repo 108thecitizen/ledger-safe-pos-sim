@@ -38,8 +38,8 @@ flowchart LR
   API -->|audit actions| AUD
   OPS -->|GET /v1/health| API
   OPS -->|GET /v1/exceptions| API
-  OPS -->|GET /v1/exceptions/{exception_id}| API
-  OPS -->|POST /v1/exceptions/{exception_id}/resolve| API
+  OPS -->|GET /v1/exceptions/:exception_id| API
+  OPS -->|POST /v1/exceptions/:exception_id/resolve| API
 ```
 
 </details>
