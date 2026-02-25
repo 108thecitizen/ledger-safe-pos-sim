@@ -41,8 +41,9 @@ flowchart LR
   OPS -->|GET /v1/exceptions/:exception_id| API
   OPS -->|POST /v1/exceptions/:exception_id/resolve| API
 ```
-
 </details>
+
+
 ## Why the architecture is shaped this way
 
 ### 1) Bronze is append-only by design
